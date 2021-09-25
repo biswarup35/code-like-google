@@ -3,8 +3,10 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Box } from "@mui/material";
 import theme from "../src/theme";
 import AppHeader from "../src/common/header/appHeader";
+import Footer from "../src/common/footer/footer";
 
 interface MyAppProps extends AppProps {}
 /**
@@ -14,6 +16,11 @@ interface MyAppProps extends AppProps {}
  */
 export default function MyApp(props: MyAppProps) {
   const { Component, pageProps } = props;
+  const style = {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+  } as const;
   return (
     <React.Fragment>
       <Head>
@@ -23,8 +30,11 @@ export default function MyApp(props: MyAppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <AppHeader />
-        <Component {...pageProps} />
+        <Box sx={style}>
+          <AppHeader />
+          <Component {...pageProps} />
+          <Footer />
+        </Box>
       </ThemeProvider>
     </React.Fragment>
   );
