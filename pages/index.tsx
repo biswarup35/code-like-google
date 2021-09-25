@@ -36,41 +36,6 @@ export default function Home(): JSX.Element {
           Hello, World!
         </Typography>
       </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
-      <div>
-        <Typography component="h1" variant="h5" className={classes.test}>
-          Hello, World!
-        </Typography>
-      </div>
     </Fragment>
   );
 }
