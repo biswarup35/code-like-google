@@ -30,7 +30,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <Toolbar variant="dense" />
+      <Toolbar />
     </React.Fragment>
   );
 };
