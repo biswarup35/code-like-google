@@ -2,12 +2,14 @@ import { Container, Grid, Typography } from "@mui/material";
 import * as React from "react";
 import Byline from "../src/common/byline";
 import Thumbnail from "../src/common/thumbnail";
+import Markdown from "../src/markdown/markdown";
 interface BlogProps {
   title: string;
   image: {
     alt: string;
     src: string;
   };
+  content: string;
 }
 
 const Blog: React.FunctionComponent<BlogProps> = ({
@@ -16,6 +18,10 @@ const Blog: React.FunctionComponent<BlogProps> = ({
     alt: "Product alt",
     src: "/product.png",
   },
+  content = `
+  <p> Hello, this first paragraph </p>
+  <CustomComponent />
+  `,
 }) => {
   return (
     <Container maxWidth="lg">
@@ -30,7 +36,8 @@ const Blog: React.FunctionComponent<BlogProps> = ({
           <Byline />
           {/* Thumbnail */}
           <Thumbnail src={image.src} alt={image.alt} />
-          {/* Markdown Content */}
+          {/* Markdown content */}
+          <Markdown>{content}</Markdown>
         </Grid>
         <Grid item xs={12} md={3} sx={{ border: `1px solid red` }}>
           {/* Right sidebar */}
