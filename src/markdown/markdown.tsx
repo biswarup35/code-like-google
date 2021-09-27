@@ -1,13 +1,13 @@
 import * as React from "react";
 import MarkdownJsx, { MarkdownToJSX } from "markdown-to-jsx";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import Paragraph from "./paragraph";
 import Links from "./links";
 import Images from "./images";
-import Hello from "./hello";
+import Earbud from "./earbud";
 
 interface MarkdownOptions extends MarkdownToJSX.Options {
-  CustomComponent?: React.ReactNode;
+  Earbud?: React.ReactNode;
 }
 
 const options: MarkdownOptions = {
@@ -32,8 +32,10 @@ const options: MarkdownOptions = {
     p: { component: Paragraph },
     a: { component: Links },
     img: { component: Images },
-    CustomComponent: { component: Hello },
+    hr: { component: Divider, props: { variant: "middle", sx: { mt: 2 } } },
+    Earbud: { component: Earbud },
   },
+  forceBlock: true,
 };
 const Markdown = (props: any) => {
   return <MarkdownJsx options={options} {...props} />;
