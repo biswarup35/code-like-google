@@ -20,18 +20,26 @@ const Blog: React.FunctionComponent<BlogProps> = ({
   },
   content = `
   <p> Hello, this first paragraph </p>
-  <CustomComponent />
+  
+
+  <Earbud />
+  <p> This is another paragraph</p>
+  
+
+  <Earbud />
   `,
 }) => {
   return (
-    <Container maxWidth="lg">
-      <Grid container>
+    <Container maxWidth="lg" component="main">
+      {/* Title */}
+      <header>
+        <Typography component="h1" variant="h4" gutterBottom>
+          {title}
+        </Typography>
+      </header>
+      <Grid container spacing={2}>
         {/* Main */}
-        <Grid item xs={12} md={6} sx={{ border: `1px solid green` }}>
-          {/* Title */}
-          <Typography component="h1" variant="h4" gutterBottom>
-            {title}
-          </Typography>
+        <Grid item xs={12} md={7}>
           {/* Byline */}
           <Byline />
           {/* Thumbnail */}
@@ -39,9 +47,9 @@ const Blog: React.FunctionComponent<BlogProps> = ({
           {/* Markdown content */}
           <Markdown>{content}</Markdown>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ border: `1px solid red` }}>
+        <Grid item xs={12} md={5}>
           {/* Right sidebar */}
-          <Typography>Hello, from right sidebar</Typography>
+          <Typography align="right">Hello, from right sidebar</Typography>
         </Grid>
       </Grid>
     </Container>
