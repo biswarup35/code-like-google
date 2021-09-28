@@ -11,6 +11,7 @@ import {
   Typography,
   useMediaQuery,
   Box,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/menu";
 import MobileMenu from "./mobileMenu";
@@ -19,6 +20,7 @@ interface AppHeaderProps {}
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
   const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleOnOpen = () => {
@@ -31,7 +33,12 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar>
+        <AppBar
+          sx={{
+            bgcolor: "common.white",
+            borderBottom: `1px solid ${theme.palette.divider}`,
+          }}
+        >
           <Toolbar variant="dense">
             <Container maxWidth="lg" sx={{ display: "flex" }}>
               <Box
@@ -43,26 +50,29 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
                 }}
               >
                 {smUp || (
-                  <IconButton color="inherit" onClick={handleOnOpen}>
+                  <IconButton
+                    sx={{ color: "common.black" }}
+                    onClick={handleOnOpen}
+                  >
                     <MenuIcon />
                   </IconButton>
                 )}
-                <Typography>LOGO</Typography>
+                <Typography color="text.primary">LOGO</Typography>
               </Box>
               {smUp && (
                 <Box>
                   <Link href="/" passHref>
-                    <Button variant="text" color="inherit">
+                    <Button variant="text" sx={{ color: "common.black" }}>
                       Home
                     </Button>
                   </Link>
                   <Link href="/earbuds" passHref>
-                    <Button variant="text" color="inherit">
+                    <Button variant="text" sx={{ color: "common.black" }}>
                       Earbuds
                     </Button>
                   </Link>
                   <Link href="/speakers" passHref>
-                    <Button variant="text" color="inherit">
+                    <Button variant="text" sx={{ color: "common.black" }}>
                       Speakers
                     </Button>
                   </Link>
