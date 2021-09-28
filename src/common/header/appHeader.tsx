@@ -1,36 +1,79 @@
 import * as React from "react";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { AppBar, Container, Toolbar, Typography } from "@mui/material";
-interface Props {
-  children: React.ReactElement;
-}
-const ElevationScroll = (props: Props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-};
+import Link from "next/link";
+import ElevationScroll from "./elevationScroll";
+import {
+  AppBar,
+  Button,
+  Container,
+  IconButton,
+  Theme,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  Box,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/menu";
+import MobileMenu from "./mobileMenu";
 
 interface AppHeaderProps {}
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
+  const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
+  const [open, setOpen] = React.useState(false);
+
+  const handleOnOpen = () => {
+    setOpen(true);
+  };
+  const handleOnClose = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
       <ElevationScroll>
         <AppBar>
           <Toolbar variant="dense">
-            <Container maxWidth="lg">
-              <Typography>Hello</Typography>
+            <Container maxWidth="lg" sx={{ display: "flex" }}>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                }}
+              >
+                {smUp || (
+                  <IconButton color="inherit" onClick={handleOnOpen}>
+                    <MenuIcon />
+                  </IconButton>
+                )}
+                <Typography>LOGO</Typography>
+              </Box>
+              {smUp && (
+                <Box>
+                  <Link href="/" passHref>
+                    <Button variant="text" color="inherit">
+                      Home
+                    </Button>
+                  </Link>
+                  <Link href="/earbuds" passHref>
+                    <Button variant="text" color="inherit">
+                      Earbuds
+                    </Button>
+                  </Link>
+                  <Link href="/speakers" passHref>
+                    <Button variant="text" color="inherit">
+                      Speakers
+                    </Button>
+                  </Link>
+                </Box>
+              )}
             </Container>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
       <Toolbar />
+      <MobileMenu open={open} onClose={handleOnClose} onOpen={handleOnOpen} />
     </React.Fragment>
   );
 };
