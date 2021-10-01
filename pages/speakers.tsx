@@ -1,6 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import * as React from "react";
-import ProductCard, { ProductCardProps } from "../src/earbud/productCard";
+import Speaker, { SpeakerProps } from "../src/speaker/speaker";
+
 interface SpeakersProps {}
 /**
  * Speaker Product Page - List all the Speaker products
@@ -9,17 +10,18 @@ interface SpeakersProps {}
  * @return {JSX.Element}
  */
 const Speakers: React.FunctionComponent<SpeakersProps> = () => {
-  const product: ProductCardProps = {
+  const product: SpeakerProps = {
     title: "Product name",
     image: {
       alt: "product alt",
       src: "/product.png",
     },
     specs: {
-      batteryLife: 20,
-      range: 10,
-      bluetoothVersion: 5.0,
-      mic: false,
+      bluetoothVersion: 4.1,
+      configuration: "Stereo",
+      playBackTime: 12,
+      power: 12,
+      sound: "High-res",
     },
     affliateLinks: {
       amazon: "#amazon",
@@ -48,7 +50,7 @@ const Speakers: React.FunctionComponent<SpeakersProps> = () => {
         <Grid container spacing={2}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
             <Grid key={item} item xs={12} sm={6} md={4}>
-              <ProductCard
+              <Speaker
                 title={product.title}
                 image={product.image}
                 specs={product.specs}
