@@ -34,6 +34,11 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
               <ListItemText primary="Speakers" />
             </ListItem>
           </Link>
+          <Link href="/headphones" passHref>
+            <ListItem button>
+              <ListItemText primary="Headphones" />
+            </ListItem>
+          </Link>
         </List>
       </SwipeableDrawer>
     </React.Fragment>

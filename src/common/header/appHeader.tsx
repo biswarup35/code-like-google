@@ -76,6 +76,11 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
                       Speakers
                     </Button>
                   </Link>
+                  <Link href="/headphones" passHref>
+                    <Button variant="text" sx={{ color: "common.black" }}>
+                      Headphones
+                    </Button>
+                  </Link>
                 </Box>
               )}
             </Container>
