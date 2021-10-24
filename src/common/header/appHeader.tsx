@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import ElevationScroll from "./elevationScroll";
+import { Menu } from "../../../config";
 import {
   AppBar,
   Button,
@@ -61,26 +62,13 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = () => {
               </Box>
               {smUp && (
                 <Box>
-                  <Link href="/" passHref>
-                    <Button variant="text" sx={{ color: "common.black" }}>
-                      Home
-                    </Button>
-                  </Link>
-                  <Link href="/earbuds" passHref>
-                    <Button variant="text" sx={{ color: "common.black" }}>
-                      Earbuds
-                    </Button>
-                  </Link>
-                  <Link href="/speakers" passHref>
-                    <Button variant="text" sx={{ color: "common.black" }}>
-                      Speakers
-                    </Button>
-                  </Link>
-                  <Link href="/headphones" passHref>
-                    <Button variant="text" sx={{ color: "common.black" }}>
-                      Headphones
-                    </Button>
-                  </Link>
+                  {Menu.map((menu) => (
+                    <Link key={menu.name} href={menu.href} passHref>
+                      <Button variant="text" sx={{ color: "common.black" }}>
+                        {menu.name}
+                      </Button>
+                    </Link>
+                  ))}
                 </Box>
               )}
             </Container>

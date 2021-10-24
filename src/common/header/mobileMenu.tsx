@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Menu } from "../../../config";
 import {
   List,
   ListItem,
@@ -19,26 +20,13 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
     <React.Fragment>
       <SwipeableDrawer open={open} onOpen={onOpen} onClose={onClose}>
         <List sx={{ minWidth: 240 }}>
-          <Link href="/" passHref>
-            <ListItem button>
-              <ListItemText primary="Home" />
-            </ListItem>
-          </Link>
-          <Link href="/earbuds" passHref>
-            <ListItem button>
-              <ListItemText primary="Earbuds" />
-            </ListItem>
-          </Link>
-          <Link href="/speakers" passHref>
-            <ListItem button>
-              <ListItemText primary="Speakers" />
-            </ListItem>
-          </Link>
-          <Link href="/headphones" passHref>
-            <ListItem button>
-              <ListItemText primary="Headphones" />
-            </ListItem>
-          </Link>
+          {Menu.map((menu) => (
+            <Link key={menu.name} href={menu.href} passHref>
+              <ListItem button>
+                <ListItemText primary={menu.name} />
+              </ListItem>
+            </Link>
+          ))}
         </List>
       </SwipeableDrawer>
     </React.Fragment>
